@@ -1,0 +1,11 @@
+TOPIC
+	about_EventList
+	
+SHORT DESCRIPTION
+	Explains how to use the EventList powershell module
+	
+LONG DESCRIPTION
+	<Insert Content here>
+
+KEYWORDS
+	EventList
