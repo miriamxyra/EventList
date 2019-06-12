@@ -37,7 +37,7 @@ Param (
 $ModuleName = "EventList"
 
 # Base path to the github repository
-$BaseUrl = "https://github.com/<InsertUsernameHere>/EventList"
+$BaseUrl = "https://github.com/miriamxyra/EventList"
 
 # If the module is in a subfolder of the cloned repository, specify relative path here. Empty string to skip.
 $SubFolder = "EventList"
