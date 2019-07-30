@@ -8,7 +8,7 @@ It helps you combining Microsoft Security Baselines with MITRE ATT&CK and genera
 
 ## Installation
 
-Either use the install.ps1 Script to install the module or copy the EventList sub folder directly into your PowerShell modules directory.
+Install-Module -Name EventList -Force
 
 ### PowerShell module dependencies
 
