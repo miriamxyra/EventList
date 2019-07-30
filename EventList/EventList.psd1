@@ -65,7 +65,7 @@
 		PSData = @{
 
 			# Tags applied to this module. These help with module discovery in online galleries.
-			Tags = @("Mitre ATT&CK", "Mitre", "Windows Events", "Event ID", "EventList", "Event List")
+			# Tags = @("Mitre ATT&CK", "Mitre", "Windows Events", "Event ID", "EventList", "Event List")
 
 			# A URL to the license for this module.
 			LicenseUri = 'https://opensource.org/licenses/MIT'
