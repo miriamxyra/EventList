@@ -10,6 +10,13 @@ It helps you combining Microsoft Security Baselines with MITRE ATT&CK and genera
 
 Either use the install.ps1 Script to install the module or copy the EventList sub folder directly into your PowerShell modules directory.
 
+### PowerShell module dependencies
+
+EventList requires the following PowerShell modules to work properly:
+- PSFramework
+- PSSQLite
+- powershell-yaml
+
 ## Usage
 
 Once the module is installed, you can open EventList by calling
