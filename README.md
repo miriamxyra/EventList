@@ -1,5 +1,7 @@
 # EventList
 
+![alt text](https://miriamxyra.files.wordpress.com/2019/05/eventlist.png?w=300 "EventList Logo")
+
 EventList is a tool to help improving your Audit capabilities and to help to build your Security Operation Center.
 
 It helps you combining Microsoft Security Baselines with MITRE ATT&CK and generating hunting queries for your SIEM system - regardless of the product used.
