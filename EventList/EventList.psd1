@@ -65,16 +65,16 @@
 		PSData = @{
 
 			# Tags applied to this module. These help with module discovery in online galleries.
-			# Tags = @()
+			Tags = @("Mitre ATT&CK", "Mitre", "Windows Events", "Event ID", "EventList", "Event List")
 
 			# A URL to the license for this module.
-			# LicenseUri = ''
+			LicenseUri = 'https://opensource.org/licenses/MIT'
 
 			# A URL to the main website for this project.
-			# ProjectUri = ''
+			ProjectUri = 'https://github.com/miriamxyra/EventList'
 
 			# A URL to an icon representing this module.
-			# IconUri = ''
+			IconUri = 'https://miriamxyra.files.wordpress.com/2019/05/eventlist.png'
 
 			# ReleaseNotes of this module
 			# ReleaseNotes = ''
