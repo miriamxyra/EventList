@@ -1,4 +1,4 @@
-Describe "Validating the module manifest" {
+﻿Describe "Validating the module manifest" {
 	$moduleRoot = (Resolve-Path "$PSScriptRoot\..\..").Path
 	$manifest = ((Get-Content "$moduleRoot\EventList.psd1") -join "`n") | Invoke-Expression
 	[version]$moduleVersion = Get-Item "$moduleRoot\EventList.psm1" | Select-String -Pattern '\$script:ModuleVersion = "(.*?)"' | ForEach-Object { $_.Matches[0].Groups[1].Value }

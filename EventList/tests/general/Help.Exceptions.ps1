@@ -1,4 +1,4 @@
-# List of functions that should be ignored
+﻿# List of functions that should be ignored
 $global:FunctionHelpTestExceptions = @(
     
 )

@@ -1,9 +1,9 @@
-@{
+﻿@{
 	# Script module or binary module file associated with this manifest
 	ModuleToProcess = 'EventList.psm1'
 
 	# Version number of this module.
-	ModuleVersion = '1.0.0.1'
+	ModuleVersion = '1.0.0.2'
 
 	# ID used to uniquely identify this module
 	GUID = '6a7ec113-3459-431c-a0eb-4942615a850c'

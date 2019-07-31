@@ -3,6 +3,7 @@
 .vscode/*
 *.psproj
 *TempPoint*
+.vs/*
 
 # Ignore staging info from Visual Studio
 library/EventList/.vs/*

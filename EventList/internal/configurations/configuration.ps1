@@ -1,4 +1,4 @@
-<#
+﻿<#
 This is an example configuration file
 
 By default, it is enough to have a single one of them,

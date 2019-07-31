@@ -1,4 +1,4 @@
-# List all files that are loaded in the preimport.ps1
+﻿# List all files that are loaded in the preimport.ps1
 # In the order they are loaded during preimport
 
 internal\configurations\*.ps1

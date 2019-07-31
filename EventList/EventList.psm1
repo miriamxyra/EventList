@@ -1,5 +1,5 @@
-$script:ModuleRoot = $PSScriptRoot
-$script:ModuleVersion = "1.0.0.0"
+﻿$script:ModuleRoot = $PSScriptRoot
+$script:ModuleVersion = "1.0.0.2"
 
 # Detect whether at some level dotsourcing was enforced
 $script:doDotSource = Get-PSFConfigValue -FullName EventList.Import.DoDotSource -Fallback $false

@@ -1,4 +1,4 @@
-# List of forbidden commands
+﻿# List of forbidden commands
 $global:BannedCommands = @(
 	'Write-Host',
 	'Write-Verbose',
