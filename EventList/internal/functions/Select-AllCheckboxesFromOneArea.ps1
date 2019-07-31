@@ -15,7 +15,6 @@
 
 #>
 	[CmdletBinding()]
-
     param (
         [string]$AreaName
     )

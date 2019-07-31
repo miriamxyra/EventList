@@ -14,7 +14,7 @@
 
 #>
 	[CmdletBinding()]
-	
+	param ()
 
     $query = "select name from sigma_supportedSiem order by name;"
 

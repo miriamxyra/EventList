@@ -14,6 +14,7 @@
 
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
 	[CmdletBinding()]
+	param ()
 
     foreach ($key in $CheckBox.keys) {
         for ($i=0; $i -lt $CheckBox[$key].Items.count; $i++) {

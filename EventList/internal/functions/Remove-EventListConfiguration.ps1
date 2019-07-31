@@ -12,7 +12,6 @@
 
 #>
 	[CmdletBinding()]
-
     param(
         [switch]$sigmaPath
     )

@@ -24,15 +24,14 @@
 
 #>
 	[CmdletBinding()]
-
-Param (
-        [ValidateNotNull()]
-        [Parameter(Mandatory=$true)]
-        [System.Windows.Forms.ComboBox]$ComboBox,
-        $Items,
-        [string]$DisplayMember,
-        [switch]$Append
-    )
+	Param (
+			[ValidateNotNull()]
+			[Parameter(Mandatory=$true)]
+			[System.Windows.Forms.ComboBox]$ComboBox,
+			$Items,
+			[string]$DisplayMember,
+			[switch]$Append
+		)
 
    if(-not$Append)
     {

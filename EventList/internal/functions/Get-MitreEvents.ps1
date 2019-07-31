@@ -19,7 +19,6 @@
 
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
 	[CmdletBinding()]
-
     param (
         [switch]$advancedAudit
     )

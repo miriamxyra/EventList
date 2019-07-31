@@ -12,7 +12,6 @@
 
 #>
 	[CmdletBinding()]
-
     Param (
         [string]$BaselineName
     )

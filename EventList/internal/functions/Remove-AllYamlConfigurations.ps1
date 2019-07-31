@@ -14,6 +14,7 @@
 
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
 	[CmdletBinding()]
+	param ()
 
     $Query = "delete from queries_data_yaml_main; delete from queries_data_yaml_tags;"
 

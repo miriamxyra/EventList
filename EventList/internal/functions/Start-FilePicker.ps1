@@ -15,7 +15,6 @@
 
 #>
 	[CmdletBinding()]
-
 param(
     [string]$description = "Select a file or directory"
 )

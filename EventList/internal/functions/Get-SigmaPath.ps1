@@ -14,6 +14,8 @@
 
 #>
 	[CmdletBinding()]
+	param ()
+
     $query = "select sigma_path from EventList_configuration;"
 
     $sigmaPath = Invoke-SqliteQuery -Query $query -DataSource $database | Select-Object -ExpandProperty sigma_path

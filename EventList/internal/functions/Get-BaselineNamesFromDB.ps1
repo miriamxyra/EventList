@@ -15,6 +15,7 @@
 #>
 
 	[CmdletBinding()]
+	param ()
 
     $query = "select name from baseline_main;"
 
