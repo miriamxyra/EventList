@@ -15,6 +15,7 @@
 #>
 	
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
+	[CmdletBinding()]
 
     $query = "select id, area_name from mitre_areas;"
 

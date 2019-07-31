@@ -15,6 +15,7 @@
 #>
 
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
+	[CmdletBinding()]
 
     $configFolder = Start-FilePicker -description "Select the directory where the YAML configuration files are located"
     if (![string]::IsNullOrEmpty($configFolder)) {

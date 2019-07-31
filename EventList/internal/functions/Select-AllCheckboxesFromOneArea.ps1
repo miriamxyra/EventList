@@ -14,6 +14,7 @@
     Select-AllCheckboxesFromOneArea -AreaName "Initial Access"
 
 #>
+	[CmdletBinding()]
 
     param (
         [string]$AreaName

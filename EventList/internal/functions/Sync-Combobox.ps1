@@ -23,6 +23,7 @@
         Sync-ComboBox -ComboBox $ComboBox1 -Items $baselineNames
 
 #>
+	[CmdletBinding()]
 
 Param (
         [ValidateNotNull()]

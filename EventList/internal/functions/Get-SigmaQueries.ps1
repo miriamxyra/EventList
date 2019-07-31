@@ -24,6 +24,7 @@
 #>
 
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
+	[CmdletBinding()]
 
     param (
         [string]$OutputPath,

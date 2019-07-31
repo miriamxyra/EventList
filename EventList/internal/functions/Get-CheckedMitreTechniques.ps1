@@ -15,6 +15,7 @@
 #>
 
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
+	[CmdletBinding()]
 
     foreach ($key in $CheckBox.keys) {
 

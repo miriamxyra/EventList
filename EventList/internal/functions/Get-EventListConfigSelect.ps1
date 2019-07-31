@@ -13,6 +13,7 @@
     Shows a pop-up in which the EventList configuration options are being displayed.
 
 #>
+	[CmdletBinding()]
 
     [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
     [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing")

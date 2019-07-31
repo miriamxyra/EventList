@@ -11,6 +11,7 @@
     Remove-OneBaseline -BaselineName "SCM Windows 10 - Computer"
 
 #>
+	[CmdletBinding()]
 
     Param (
         [string]$BaselineName

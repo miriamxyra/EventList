@@ -11,6 +11,7 @@
     Remove-EventListConfiguration -sigmaPath
 
 #>
+	[CmdletBinding()]
 
     param(
         [switch]$sigmaPath

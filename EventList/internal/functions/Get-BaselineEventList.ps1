@@ -14,6 +14,7 @@
 
 #>
 
+	[CmdletBinding()]
     param (
         [boolean]$generateExcelYsn = $false
     )

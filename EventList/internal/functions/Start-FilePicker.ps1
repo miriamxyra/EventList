@@ -14,6 +14,7 @@
     Start-FilePicker -description "Select a file or directory"
 
 #>
+	[CmdletBinding()]
 
 param(
     [string]$description = "Select a file or directory"

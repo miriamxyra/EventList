@@ -13,7 +13,7 @@
     Gets an EventList for the selected MITRE ATT&CK techniques.
 
 #>
-
+	[CmdletBinding()]
     param (
         [boolean]$generateExcelYsn = $false
     )

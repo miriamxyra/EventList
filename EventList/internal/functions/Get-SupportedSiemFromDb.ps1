@@ -13,6 +13,8 @@
     Returns all SIEM systems which are supported by sigma.
 
 #>
+	[CmdletBinding()]
+	
 
     $query = "select name from sigma_supportedSiem order by name;"
 
