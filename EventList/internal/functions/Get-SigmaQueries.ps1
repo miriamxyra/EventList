@@ -23,6 +23,8 @@
 
 #>
 
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
+
     param (
         [string]$OutputPath,
         [string]$siemName,

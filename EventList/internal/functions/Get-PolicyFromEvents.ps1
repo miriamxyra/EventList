@@ -14,6 +14,8 @@
 
 #>
 
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
+
     $destFolder = Start-FilePicker -description "Select a directory where the GPO should be saved"
     $GpoTmpl = "$ModuleRoot\internal\data\GPO\*"
 

@@ -14,6 +14,8 @@
 
 #>
 
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
+
     foreach ($key in $CheckBox.keys) {
 
         if (![string]::IsNullOrEmpty($CheckBox[$key].checkedItems)) {

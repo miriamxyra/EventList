@@ -14,6 +14,8 @@
 
 #>
 
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
+
     $configFolder = Start-FilePicker -description "Select the directory where the YAML configuration files are located"
     if (![string]::IsNullOrEmpty($configFolder)) {
         Import-YamlCofigurationFromFolder -Path $configFolder

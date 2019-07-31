@@ -11,6 +11,8 @@
     Sync-MitreCheckboxes -BaselineName "SCM Windows 10 - Computer"
 
 #>
+	
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
 
     param (
         [string]$BaselineName

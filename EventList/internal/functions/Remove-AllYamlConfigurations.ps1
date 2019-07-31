@@ -12,6 +12,8 @@
 
 #>
 
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
+
     $Query = "delete from queries_data_yaml_main; delete from queries_data_yaml_tags;"
 
     Invoke-SqliteQuery -Query $Query -DataSource $Database

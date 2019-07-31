@@ -16,7 +16,7 @@
     Returns all events for the selected Mitre techniques.
 
 #>
-
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     param (
         [switch]$advancedAudit
     )

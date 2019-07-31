@@ -12,6 +12,8 @@
 
 #>
 
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
+
     foreach ($key in $CheckBox.keys) {
         for ($i=0; $i -lt $CheckBox[$key].Items.count; $i++) {
             $CheckBox[$key].SetItemChecked($i, $false)

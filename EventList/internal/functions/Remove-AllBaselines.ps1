@@ -12,6 +12,8 @@
 
 #>
 
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
+
     $Query = "delete from baseline_data; delete from baseline_main;"
 
     Invoke-SqliteQuery -Query $Query -DataSource $Database

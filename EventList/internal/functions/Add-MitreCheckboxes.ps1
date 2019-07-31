@@ -13,6 +13,8 @@
     Populates all the MITRE ATT&CK checkboxes.
 
 #>
+	
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
 
     $query = "select id, area_name from mitre_areas;"
 

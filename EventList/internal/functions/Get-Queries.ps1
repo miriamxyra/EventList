@@ -14,6 +14,8 @@
 
 #>
 
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
+
     $techniques = Get-CheckedMitreTechniques
     $areas = Get-CheckedMitreAreas
 
