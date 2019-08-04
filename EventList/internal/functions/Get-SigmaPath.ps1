@@ -14,6 +14,7 @@
 
 #>
 	[CmdletBinding()]
+	[OutputType([String])]
 	param ()
 
     $query = "select sigma_path from EventList_configuration;"
