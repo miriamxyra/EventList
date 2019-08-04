@@ -7,6 +7,12 @@
     .DESCRIPTION
     Unchecks all checked MITRE ATT&CK technique & area checkboxes. Also resets the baseline combobox selection.
 
+	.PARAMETER Confirm
+	Prompts you for confirmation before executing the command.
+
+	.PARAMETER WhatIf
+	Displays a message that describes the effect of the command, instead of executing the command.
+
     .EXAMPLE
     Reset-MitreCheckboxes
 
