@@ -10,6 +10,8 @@
     .EXAMPLE
     Remove-AllBaselines
 
+	Deletes all imported baselines from the database.
+
 #>
 
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]

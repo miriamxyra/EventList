@@ -10,6 +10,8 @@
     .EXAMPLE
     Remove-AllYamlConfigurations
 
+	Deletes all imported YAML configuration files from the database.
+
 #>
 
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]

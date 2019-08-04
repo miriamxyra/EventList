@@ -10,6 +10,8 @@
     .EXAMPLE
     Remove-EventListConfiguration -sigmaPath
 
+	Deletes all existent EventList configurations from the database.
+
 #>
 	[CmdletBinding(SupportsShouldProcess)]
     param(

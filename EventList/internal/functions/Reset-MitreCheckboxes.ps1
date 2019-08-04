@@ -10,6 +10,8 @@
     .EXAMPLE
     Reset-MitreCheckboxes
 
+	Unchecks all checked MITRE ATT&CK technique & area checkboxes.
+
 #>
 
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]

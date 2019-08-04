@@ -10,6 +10,8 @@
     .EXAMPLE
     Remove-OneBaseline -BaselineName "SCM Windows 10 - Computer"
 
+	Removes one imported baseline from the database.
+
 #>
 	[CmdletBinding(SupportsShouldProcess)]
     Param (

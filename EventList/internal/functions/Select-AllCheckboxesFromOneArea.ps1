@@ -13,6 +13,8 @@
     .EXAMPLE
     Select-AllCheckboxesFromOneArea -AreaName "Initial Access"
 
+	Selects all Checkboxes of the techniques mapped to an area.
+
 #>
 	[CmdletBinding()]
     param (

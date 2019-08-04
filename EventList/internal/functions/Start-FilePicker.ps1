@@ -13,6 +13,8 @@
     .EXAMPLE
     Start-FilePicker -description "Select a file or directory"
 
+	Lets the user select a folder and returns the path. and displays the description "Select a file or directory"
+
 #>
 	[CmdletBinding(SupportsShouldProcess)]
 param(
