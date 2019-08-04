@@ -22,6 +22,8 @@
     .EXAMPLE
         Sync-ComboBox -ComboBox $ComboBox1 -Items $baselineNames
 
+		Loads baselines into a ComboBox.
+
 #>
 	[CmdletBinding()]
 	Param (
