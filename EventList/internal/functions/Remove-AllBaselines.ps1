@@ -13,7 +13,7 @@
 #>
 
 	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
-	[CmdletBinding()]
+	[CmdletBinding(SupportsShouldProcess)]
 	param ()
 
     $Query = "delete from baseline_data; delete from baseline_main;"
