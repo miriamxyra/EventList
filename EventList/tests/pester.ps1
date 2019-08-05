@@ -1,4 +1,4 @@
-param (
+﻿param (
 	$TestGeneral = $true,
 	
 	$TestFunctions = $true,

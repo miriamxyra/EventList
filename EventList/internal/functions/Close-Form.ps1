@@ -16,7 +16,7 @@
     Closes the Form.
 
 #>
-
+	[CmdletBinding()]
     param (
         [Parameter(Mandatory = $true)]
 		[object]$Form

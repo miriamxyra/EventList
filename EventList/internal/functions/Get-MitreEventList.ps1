@@ -7,13 +7,16 @@
     .DESCRIPTION
     Gets an EventList for the MITRE ATT&CK techniques which were selected from the checkboxes in the GUI.
 
+	.PARAMETER generateExcelYsn
+	Defines if an Excel document will be generated. When checked, one can define where the document should be stored.
+
     .EXAMPLE
     Get-MitreEventList -generateExcelYsn $true
 
     Gets an EventList for the selected MITRE ATT&CK techniques.
 
 #>
-
+	[CmdletBinding()]
     param (
         [boolean]$generateExcelYsn = $false
     )

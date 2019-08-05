@@ -7,6 +7,9 @@
     .DESCRIPTION
     Gets all the event ids that you need to monitor the selected MITRE Techniques & areas and matches it to the selected event forwarder syntax.
 
+	.PARAMETER ForwarderName
+	Specifies the name of the Agent Forwarder for which the config should be queried.
+
     .EXAMPLE
     Get-AgentConfigString -ForwarderName "Splunk Universal Forwarder"
 
@@ -14,6 +17,7 @@
 
 #>
 
+	[CmdletBinding()]
     param (
         [string]$ForwarderName
     )

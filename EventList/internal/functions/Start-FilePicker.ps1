@@ -10,11 +10,19 @@
     .PARAMETER description
     Specifies the description dialog which is shown to the user
 
+	.PARAMETER Confirm
+	Prompts you for confirmation before executing the command.
+
+	.PARAMETER WhatIf
+	Displays a message that describes the effect of the command, instead of executing the command.
+
     .EXAMPLE
     Start-FilePicker -description "Select a file or directory"
 
-#>
+	Lets the user select a folder and returns the path. and displays the description "Select a file or directory"
 
+#>
+	[CmdletBinding(SupportsShouldProcess)]
 param(
     [string]$description = "Select a file or directory"
 )

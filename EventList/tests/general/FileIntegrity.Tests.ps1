@@ -1,4 +1,4 @@
-$moduleRoot = (Resolve-Path "$PSScriptRoot\..\..").Path
+﻿$moduleRoot = (Resolve-Path "$PSScriptRoot\..\..").Path
 
 . "$PSScriptRoot\FileIntegrity.Exceptions.ps1"
 

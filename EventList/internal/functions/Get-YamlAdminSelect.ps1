@@ -14,6 +14,9 @@
 
 #>
 
+	[CmdletBinding()]
+	param ()
+
     [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
     [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing")
 

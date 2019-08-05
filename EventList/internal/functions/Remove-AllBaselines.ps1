@@ -7,10 +7,22 @@
     .DESCRIPTION
     Deletes all imported baselines from the database.
 
+	.PARAMETER Confirm
+	Prompts you for confirmation before executing the command.
+
+	.PARAMETER WhatIf
+	Displays a message that describes the effect of the command, instead of executing the command.
+
     .EXAMPLE
     Remove-AllBaselines
 
+	Deletes all imported baselines from the database.
+
 #>
+
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
+	[CmdletBinding(SupportsShouldProcess)]
+	param ()
 
     $Query = "delete from baseline_data; delete from baseline_main;"
 

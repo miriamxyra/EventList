@@ -1,4 +1,4 @@
-New-PSFLicense -Product 'EventList' -Manufacturer 'Miriam Wiesner' -ProductVersion $script:ModuleVersion -ProductType Module -Name MIT -Version "1.0.0.0" -Date (Get-Date "2019-03-06") -Text @"
+﻿New-PSFLicense -Product 'EventList' -Manufacturer 'Miriam Wiesner' -ProductVersion $script:ModuleVersion -ProductType Module -Name MIT -Version "1.0.0.0" -Date (Get-Date "2019-03-06") -Text @"
 Copyright (c) 2019 Miriam Wiesner
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

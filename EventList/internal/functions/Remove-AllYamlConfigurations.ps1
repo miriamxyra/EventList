@@ -7,10 +7,22 @@
     .DESCRIPTION
     Deletes all imported YAML configuration files from the database.
 
+	.PARAMETER Confirm
+	Prompts you for confirmation before executing the command.
+
+	.PARAMETER WhatIf
+	Displays a message that describes the effect of the command, instead of executing the command.
+
     .EXAMPLE
     Remove-AllYamlConfigurations
 
+	Deletes all imported YAML configuration files from the database.
+
 #>
+
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
+	[CmdletBinding(SupportsShouldProcess)]
+	param ()
 
     $Query = "delete from queries_data_yaml_main; delete from queries_data_yaml_tags;"
 

@@ -1,4 +1,4 @@
-<#
+﻿<#
 	.SYNOPSIS
 		Installs the EventList Module from github
 

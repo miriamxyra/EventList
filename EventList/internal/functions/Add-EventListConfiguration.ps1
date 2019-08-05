@@ -23,7 +23,7 @@
     Writes the configuration for the Sigma Path to the database.
 
 #>
-
+	[CmdletBinding()]
     param(
         [string]$sigmaPath
     )

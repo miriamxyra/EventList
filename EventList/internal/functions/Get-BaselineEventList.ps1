@@ -7,6 +7,9 @@
     .DESCRIPTION
     Gets an EventList for the Baseline which was selected from the Combobox in the GUI.
 
+	.PARAMETER generateExcelYsn
+	Defines if an Excel document will be generated. When checked, one can define where the document should be stored.
+
     .EXAMPLE
     Get-BaselineEventList -generateExcelYsn $true
 
@@ -14,6 +17,7 @@
 
 #>
 
+	[CmdletBinding()]
     param (
         [boolean]$generateExcelYsn = $false
     )

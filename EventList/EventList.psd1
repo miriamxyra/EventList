@@ -1,9 +1,9 @@
-@{
+﻿@{
 	# Script module or binary module file associated with this manifest
 	ModuleToProcess = 'EventList.psm1'
 
 	# Version number of this module.
-	ModuleVersion = '1.0.0.0'
+	ModuleVersion = '1.0.0.2'
 
 	# ID used to uniquely identify this module
 	GUID = '6a7ec113-3459-431c-a0eb-4942615a850c'
@@ -26,7 +26,7 @@
 	# Modules that must be imported into the global environment prior to importing
 	# this module
 	RequiredModules = @(
-		@{ ModuleName='PSFramework'; ModuleVersion='0.10.30.165' }
+		@{ ModuleName='PSFramework'; ModuleVersion='1.0.19' }
 		@{ ModuleName = 'PSSQLite'; ModuleVersion = '1.0.3' }
 		@{ ModuleName = 'powershell-yaml'; ModuleVersion = '0.4.0' }
 	)
@@ -65,7 +65,7 @@
 		PSData = @{
 
 			# Tags applied to this module. These help with module discovery in online galleries.
-			# Tags = @("Mitre ATT&CK", "Mitre", "Windows Events", "Event ID", "EventList", "Event List")
+			Tags = @("Mitre_ATT&CK", "Mitre", "Windows_Events", "Event_ID", "EventList", "Event_List")
 
 			# A URL to the license for this module.
 			LicenseUri = 'https://opensource.org/licenses/MIT'

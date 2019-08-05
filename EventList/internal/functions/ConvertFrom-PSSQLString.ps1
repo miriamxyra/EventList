@@ -18,6 +18,7 @@
 #>
 
 	[CmdletBinding()]
+	[OutputType([String])]
 	param (
 		[string]$Text
 	)

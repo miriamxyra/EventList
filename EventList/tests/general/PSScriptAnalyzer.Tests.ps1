@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 Param (
 	[switch]
 	$SkipTest,

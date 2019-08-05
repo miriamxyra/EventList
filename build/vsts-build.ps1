@@ -1,17 +1,18 @@
-<#
+﻿<#
 This script publishes the module to the gallery.
 It expects as input an ApiKey authorized to publish the module.
 
 Insert any build steps you may need to take before publishing it here.
 #>
 param (
-	$ApiKey
+	$ApiKey,
+	$WorkingDirectory = $env:SYSTEM_DEFAULTWORKINGDIRECTORY
 )
 
 # Prepare publish folder
 Write-PSFMessage -Level Important -Message "Creating and populating publishing directory"
-$publishDir = New-Item -Path $env:SYSTEM_DEFAULTWORKINGDIRECTORY -Name publish -ItemType Directory
-Copy-Item -Path "$($env:SYSTEM_DEFAULTWORKINGDIRECTORY)\EventList" -Destination $publishDir.FullName -Recurse -Force
+$publishDir = New-Item -Path $WorkingDirectory -Name publish -ItemType Directory
+Copy-Item -Path "$($WorkingDirectory)\EventList" -Destination $publishDir.FullName -Recurse -Force
 
 # Create commands.ps1
 $text = @()

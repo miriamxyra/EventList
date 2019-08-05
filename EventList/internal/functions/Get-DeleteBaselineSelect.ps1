@@ -13,6 +13,8 @@
     Shows a pop-up in which the deletion options are being displayed.
 
 #>
+	[CmdletBinding()]
+	param ()
 
     [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
     [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing")

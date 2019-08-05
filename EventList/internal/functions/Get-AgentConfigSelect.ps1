@@ -14,6 +14,8 @@ function Get-AgentConfigSelect {
     Displays the form to select and display the Agent config of your choice.
 
 #>
+	[CmdletBinding()]
+	param ()
 
     [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
     [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing")

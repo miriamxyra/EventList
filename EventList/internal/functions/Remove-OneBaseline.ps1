@@ -7,11 +7,22 @@
     .DESCRIPTION
     Removes one imported baseline from the database.
 
+	.PARAMETER BaselineName
+	Defines the name of the baseline.
+
+	.PARAMETER Confirm
+	Prompts you for confirmation before executing the command.
+
+	.PARAMETER WhatIf
+	Displays a message that describes the effect of the command, instead of executing the command.
+
     .EXAMPLE
     Remove-OneBaseline -BaselineName "SCM Windows 10 - Computer"
 
-#>
+	Removes one imported baseline from the database.
 
+#>
+	[CmdletBinding(SupportsShouldProcess)]
     Param (
         [string]$BaselineName
     )

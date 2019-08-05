@@ -13,6 +13,9 @@
     Returns the path to the location where sigmac is located.
 
 #>
+	[CmdletBinding()]
+	[OutputType([String])]
+	param ()
 
     $query = "select sigma_path from EventList_configuration;"
 

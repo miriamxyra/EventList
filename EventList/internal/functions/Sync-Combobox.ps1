@@ -22,16 +22,18 @@
     .EXAMPLE
         Sync-ComboBox -ComboBox $ComboBox1 -Items $baselineNames
 
-#>
+		Loads baselines into a ComboBox.
 
-Param (
-        [ValidateNotNull()]
-        [Parameter(Mandatory=$true)]
-        [System.Windows.Forms.ComboBox]$ComboBox,
-        $Items,
-        [string]$DisplayMember,
-        [switch]$Append
-    )
+#>
+	[CmdletBinding()]
+	Param (
+			[ValidateNotNull()]
+			[Parameter(Mandatory=$true)]
+			[System.Windows.Forms.ComboBox]$ComboBox,
+			$Items,
+			[string]$DisplayMember,
+			[switch]$Append
+		)
 
    if(-not$Append)
     {

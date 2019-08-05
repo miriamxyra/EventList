@@ -14,6 +14,9 @@
 
 #>
 
+	[CmdletBinding()]
+	param ()
+
     $query = "select name from baseline_main;"
 
     $baselineNames = Invoke-SqliteQuery -Query $query -DataSource $database | Select-Object -ExpandProperty name

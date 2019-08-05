@@ -7,11 +7,18 @@
     .DESCRIPTION
     Syncs all Mitre Checkboxes according to the selected baseline.
 
+	.PARAMETER BaselineName
+	Defines the baseline for which the MITRE ATT&CK Checkboxes should be synced.
+
     .EXAMPLE
     Sync-MitreCheckboxes -BaselineName "SCM Windows 10 - Computer"
 
-#>
+	Syncs all Mitre Checkboxes according to the selected baseline.
 
+#>
+	
+	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
+	[CmdletBinding()]
     param (
         [string]$BaselineName
     )
