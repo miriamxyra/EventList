@@ -3,7 +3,7 @@
 	ModuleToProcess = 'EventList.psm1'
 
 	# Version number of this module.
-	ModuleVersion = '1.0.0.2'
+	ModuleVersion = '1.1.0'
 
 	# ID used to uniquely identify this module
 	GUID = '6a7ec113-3459-431c-a0eb-4942615a850c'

@@ -105,7 +105,8 @@
         }
         else {
             if ($sigmaIsInstalled) {
-                $sigmaquery = python.exe $sigmaLocation -t $target ($yamlPath + $filename) 2>>$OutputPath\$tmp"_EventList-Queries\SigmaLog.txt"
+				$sigmaConfigPath = Join-Path -Path $sigmaLocation -ChildPath "..\config\generic\windows-audit.yml" -Resolve
+                $sigmaquery = python.exe $sigmaLocation -t $target ($yamlPath + $filename) -c $sigmaConfigPath 2>>$OutputPath\$tmp"_EventList-Queries\SigmaLog.txt"
                 if ($sigmaquery) {
                     $addQuery = $true
                 }
@@ -116,9 +117,9 @@
                 }
             }
             else {
-                $tmpStr = $tmpStr + "    python.exe tools/sigmac -t $target $yamlFile `r`n"
+                $tmpStr = $tmpStr + "    python.exe tools/sigmac -t $target $yamlFile -c config\generic\windows-audit.yml `r`n"
                 $addQuery = $true
-                $scriptStr = $scriptStr + "python.exe tools/sigmac -t $target $yamlFile `r`n`r`n"
+                $scriptStr = $scriptStr + "python.exe tools/sigmac -t $target $yamlFile -c config\generic\windows-audit.yml `r`n`r`n"
             }
         }
 

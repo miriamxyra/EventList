@@ -47,7 +47,7 @@
 
     $Checkbox1.Add_Click({
         if ($Checkbox1.checked) {
-            $sigmaPath = Start-FilePicker -description "Please select where to store your Excel file"
+            $sigmaPath = Start-FilePicker -description "Please select where the sigmac file is located"
             if ($sigmaPath) {
                 Add-EventListConfiguration -sigmaPath $sigmaPath
                 $Checkbox1.Text = "Sigma Path configured: $sigmaPath"

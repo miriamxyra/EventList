@@ -37,7 +37,7 @@
     $RadioButton1.Location = '20,50'
     $RadioButton1.size = '450,30'
     $RadioButton1.Checked = $true
-    $RadioButton1.Text = "Import a Microsoft Security Baseline"
+    $RadioButton1.Text = "Import a Microsoft Security Baseline or a backed-up GPO"
 
     $OKButton = new-object System.Windows.Forms.Button
     $OKButton.Location = '230,200'
