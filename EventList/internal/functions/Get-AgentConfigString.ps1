@@ -22,19 +22,28 @@
         [string]$ForwarderName
     )
 
-    $query = "select syntax from agent_forwarder_syntax where name = '" + (ConvertTo-PSSQLString($ForwarderName)) + "';"
-    $syntaxStr = Invoke-SqliteQuery -Query $query -DataSource $database | Select-Object -ExpandProperty syntax
+	$query = "select * from agent_forwarder_syntax where name = '" + (ConvertTo-PSSQLString($ForwarderName)) + "';"
+	$results = Invoke-SqliteQuery -Query $query -DataSource $database
 
-    $eventStr = Get-MitreEvents | Select-Object -ExpandProperty event_id -Unique
+	foreach ($result in $results) {
+		$eventStr = Get-MitreEvents -EventIds | Select-Object -ExpandProperty event_id -Unique | foreach-Object { $result.single_event_syntax -replace ("{{SINGLE_EVENTID}}", $_) }
+		
+		$eventStr = [string]$eventStr -replace(" ", ($result.event_separator + " "))
+		$eventStr = [string]$eventStr -replace(($result.event_separator + " -1"), "")
 
-    $eventStr = [string]$eventStr -replace(" ", ", ")
-    $eventStr = [string]$eventStr -replace(", -1", "")
-    $eventStr = [string]$eventStr -replace("-1", "")
+		if ($result.single_event_syntax -eq "{{SINGLE_EVENTID}}") {
+			$eventStr = [string]$eventStr -replace("-1", "")
+		}
+		else {
+			$SingleEventSyntaxReplaced = $result.single_event_syntax -replace ("{{SINGLE_EVENTID}}", "")
+			$eventStr = [string]$eventStr -replace(($SingleEventSyntaxReplaced + "-1" + $result.event_separator), "")
+		}
 
-    $syntaxStr = $syntaxStr -replace ("{{EVENTIDS}}", $eventStr) -replace "`n", "`r`n"
+		$syntaxStr = $result.syntax -replace ("{{EVENTIDS}}", $eventStr) -replace "`n", "`r`n"
 
-    $syntaxStr = $syntaxStr -replace("= ,", "=")
-
-    $agentSnippetBox.Text = $syntaxStr
+		$syntaxStr = $syntaxStr -replace(("= " + $result.event_separator), "=")
+		$agentSnippetBox.Text = $syntaxStr
+		
+	}
 
 }

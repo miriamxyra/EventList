@@ -35,7 +35,7 @@ function Get-AgentConfigSelect {
 
 
     $ComboBox2                       = New-Object system.Windows.Forms.ComboBox
-    $query = "select name from agent_forwarder_syntax;"
+    $query = "select name from agent_forwarder_syntax order by name;"
     $agentFwdNames = Invoke-SqliteQuery -Query $query -DataSource $database | Select-Object -ExpandProperty name
 
     if ([string]::IsNullOrEmpty($agentFwdNames)) {
