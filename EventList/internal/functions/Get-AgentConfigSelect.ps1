@@ -23,7 +23,7 @@ function Get-AgentConfigSelect {
     $Form = New-Object System.Windows.Forms.Form
     $Form.width = 700
     $Form.height = 550
-    $Form.Text = "Import Baseline"
+    $Form.Text = "Generate Agent Config"
 
     $Font = New-Object System.Drawing.Font("Microsoft Sans Serif",10)
     $Form.Font = $Font
