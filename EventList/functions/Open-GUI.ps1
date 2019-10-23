@@ -14,17 +14,20 @@
 
 #>
 
-    $GuiWidth = 1535
-    $GuiHeight = 1000
+    $GuiWidth = ( Get-CIMInstance Win32_VideoController | Select-Object -Property CurrentHorizontalResolution).CurrentHorizontalResolution
+    $GuiHeight = ( Get-CIMInstance Win32_VideoController | Select-Object -Property CurrentVerticalResolution).CurrentVerticalResolution
+
 
     $ButtonWidth = 200
     $ButtonHeight = 30
     $ButtonXDistance = 215
     $ButtonYDistance = 40
 
-    $ButtonPanelDistance = 1305
+    $ButtonPanelDistance = 10 + ((380 ) * 3)
+    $CheckedListBoxDistance = 10 + ((225 + 25 ) * 4)
 
     $ComboboxWidth = 420
+
 
     $x = 10
     $y = 20 + 60
@@ -38,18 +41,19 @@
     $Form                            = New-Object system.Windows.Forms.Form
     $Form.ClientSize                 = "$GuiWidth,$GuiHeight"
     $Form.text                       = "EventList"
+    $Form.AutoScroll                 = $true
     $Form.TopMost                    = $false
 
     #Panel oben mit Baseline Auswahl
     $Panel1                          = New-Object system.Windows.Forms.Panel
     $Panel1.height                   = 50
-    $Panel1.width                    = 2000
+    $Panel1.width                    = $ButtonPanelDistance + 235
     $Panel1.BackColor                = "#9b9b9b"
     $Panel1.location                 = New-Object System.Drawing.Point(0,0)
 
     #Panel an der Seite mit Buttons
     $Panel2                          = New-Object system.Windows.Forms.Panel
-    $Panel2.height                   = 2000
+    $Panel2.height                   = $CheckedListBoxDistance
     $Panel2.width                    = 235
     $Panel2.BackColor                = "#9b9b9b"
     $Panel2.location                 = New-Object System.Drawing.Point($ButtonPanelDistance,0)
@@ -58,6 +62,18 @@
 
     $x = $ButtonPanelDistance + 10
     $y = 60
+
+    $ButtonConfig                         = New-Object system.Windows.Forms.Button
+    $ButtonConfig.BackColor               = "#C0C0C0"
+    $ButtonConfig.text                    = "Configure EventList"
+    $ButtonConfig.width                   = $ButtonWidth
+    $ButtonConfig.height                  = $ButtonHeight
+    $ButtonConfig.location                = New-Object System.Drawing.Point($x,$y)
+    $ButtonConfig.Font                    = [System.Drawing.Font]::new("Microsoft Sans Serif", 11, [System.Drawing.FontStyle]::Bold)
+    $Form.controls.AddRange(@($ButtonConfig))
+    $ButtonConfig.Add_Click({
+       Get-EventListConfigSelect
+    })  
 
     $ButtonShowEvts                         = New-Object system.Windows.Forms.Button
     $ButtonShowEvts.BackColor               = "#d5d8d7"
@@ -109,7 +125,7 @@
     $Form.controls.AddRange(@($ButtonExportGPO))
     $ButtonExportGPO.Add_Click({ Get-PolicyFromEvents })
 
-    $y = $GuiHeight - 50
+    $y = $y + $ButtonYDistance
 
     $ButtonExit                         = New-Object system.Windows.Forms.Button
     $ButtonExit.BackColor               = "#C0C0C0"
@@ -204,19 +220,6 @@
         Get-YamlAdminSelect
      })
 
-     $x = $x + $ButtonXDistance
-
-     $ButtonConfig                         = New-Object system.Windows.Forms.Button
-     $ButtonConfig.BackColor               = "#C0C0C0"
-     $ButtonConfig.text                    = "Configure EventList"
-     $ButtonConfig.width                   = $ButtonWidth
-     $ButtonConfig.height                  = $ButtonHeight
-     $ButtonConfig.location                = New-Object System.Drawing.Point($x,$y)
-     $ButtonConfig.Font                    = [System.Drawing.Font]::new("Microsoft Sans Serif", 11, [System.Drawing.FontStyle]::Bold)
-     $Form.controls.AddRange(@($ButtonConfig))
-     $ButtonConfig.Add_Click({
-        Get-EventListConfigSelect
-     })
 
     Sync-ComboBox -ComboBox $ComboBox1 -Items $baselineNames
 
