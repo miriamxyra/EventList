@@ -11,7 +11,7 @@
     Prompts you for the Identity that should be used to generate an Group Policy from. You can either use a baseline name or one or multiple Mitre Technique IDs.
     
     .PARAMETER Path
-    Lets you specify the destination output path: where should the GPO be stored? 
+    Lets you specify the destination output path: where should the GPO be stored?
 
     .EXAMPLE
     Get-GroupPolicyFromMitreTechniques
