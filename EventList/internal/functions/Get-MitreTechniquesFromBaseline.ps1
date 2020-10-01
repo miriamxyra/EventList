@@ -1,4 +1,4 @@
-function Get-MitreTechniquesFromBaseline {
+﻿function Get-MitreTechniquesFromBaseline {
 
     <#
         .SYNOPSIS

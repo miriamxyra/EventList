@@ -54,7 +54,7 @@
                     }
                     elseif ( ($Identity -match "^['T\d{4}$]") -or ($Identity -match "^T\d{4}$") ) {
                         $MitreTechniques = $Identity
-                    } 
+                    }
                 }
             }
         

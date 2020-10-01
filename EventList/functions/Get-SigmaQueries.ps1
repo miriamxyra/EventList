@@ -46,7 +46,7 @@
             $MitreTechniques = Get-CheckedMitreTechniques
             $MitreAreas = Get-CheckedMitreAreas
         }
-        else {   
+        else {
             if ($identity) {
                 if (Get-BaselineNameFromDB -BaselineName $Identity) {
                     $MitreTechniques = Get-MitreTechniquesFromBaseline -BaselineName $Identity

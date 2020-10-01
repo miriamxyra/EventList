@@ -1,4 +1,4 @@
-function Get-IsMitreAreaYsn {
+﻿function Get-IsMitreAreaYsn {
 
     <#
         .SYNOPSIS

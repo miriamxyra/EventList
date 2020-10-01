@@ -46,7 +46,7 @@
         $CheckBoxArea[$area.area_name].Font                  = 'Microsoft Sans Serif,12'
         $CheckBoxArea[$area.area_name].Tag                   = @{AreaName = $area.area_name}
         $CheckBoxArea[$area.area_name].Add_Click({
-            param($Senderinfo) 
+            param($Senderinfo)
             & Select-AllCheckboxesFromOneArea -AreaName $($Senderinfo.Tag.AreaName)
          })
         $x = $x -2

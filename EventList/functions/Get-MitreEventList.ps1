@@ -34,7 +34,7 @@
         if ($Script:openFromGui) {
             $results = Get-MitreEvents -MitreTechniques $(Get-CheckedMitreTechniques)
         }
-        else {   
+        else {
             if ($identity) {
                 if (Get-BaselineNameFromDB -BaselineName $Identity) {
                     $tmpStr = Get-MitreTechniquesFromBaseline -BaselineName $Identity
@@ -47,7 +47,7 @@
                 }
                 elseif ( ($Identity -match "^['T\d{4}$]") -or ($Identity -match "^T\d{4}$") ) {
                     $results = Get-MitreEvents -MitreTechniques $Identity
-                } 
+                }
             }
         }
         
