@@ -1,4 +1,4 @@
-﻿function ConvertTo-PSSQLString {
+﻿function ConvertTo-PSSQLStringArray {
 
 <#
     .SYNOPSIS
@@ -11,7 +11,7 @@
     The String to parse for the database.
 
     .EXAMPLE
-    ConvertTo-PSSQLString -Text $queryString
+    ConvertTo-PSSQLStringArray -Text $queryString
 
     Converts a string into a format that can be inserted into a PSSQL database.
 #>
@@ -19,7 +19,7 @@
 	[CmdletBinding()]
 	[OutputType([String])]
 	param (
-		[string]$Text
+		[string[]]$Text
 	)
     $Text = $Text.Replace('"', "&quot;")
     $Text = $Text.Replace("'", "&apos;")

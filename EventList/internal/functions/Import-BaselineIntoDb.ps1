@@ -28,6 +28,8 @@
 		[string]$PolicyName
     )
 
+    $PolicyName = ConvertTo-PSSQLString($PolicyName)
+
     $Query = "select name from baseline_main where name = '$PolicyName';"
 
     if (!(Invoke-SqliteQuery -Query $Query -DataSource $Database)){
@@ -38,12 +40,12 @@
             $b_id = Invoke-SqliteQuery -Query $Query -DataSource $Database | Select-Object -ExpandProperty "last_insert_rowid()"
 
             ForEach ($setting in $settings){
-                $policy_target = $($setting."Policy Target")
-                $subcategory = $($setting."Subcategory")
-                $subcategory_guid = $($setting."Subcategory GUID")
-                $inclusion_setting = $($setting."Inclusion Setting")
-                $exclusion_setting = $($setting."Exclusion Setting")
-                $setting_value = $($setting."Setting Value")
+                $policy_target = $PolicyName = ConvertTo-PSSQLString($($setting."Policy Target"))
+                $subcategory = ConvertTo-PSSQLString($($setting."Subcategory"))
+                $subcategory_guid = ConvertTo-PSSQLString($($setting."Subcategory GUID"))
+                $inclusion_setting = ConvertTo-PSSQLString($($setting."Inclusion Setting"))
+                $exclusion_setting = ConvertTo-PSSQLString($($setting."Exclusion Setting"))
+                $setting_value = ConvertTo-PSSQLString($($setting."Setting Value"))
 
                 $Query = "insert into baseline_data (policy_target,subcategory,subcategory_guid,inclusion_setting,exclusion_setting,setting_value,b_id) values ('$policy_target','$subcategory','$subcategory_guid','$inclusion_setting','$exclusion_setting','$setting_value','$b_id');"
                 Invoke-SqliteQuery -Query $Query -DataSource $Database
@@ -51,8 +53,15 @@
         }
     }
     else {
-        $wshell = New-Object -ComObject Wscript.Shell
-        $wshell.Popup("Baseline $PolicyName was already imported",0,"Done",0x1)
+        $PolicyName = ConvertFrom-PSSQLString($PolicyName)
+        $resultStr = "Baseline $PolicyName was already imported"
+        if ($openFromGui) {
+            $wshell = New-Object -ComObject Wscript.Shell
+            $wshell.Popup($resultStr,0,"Done",0x1)
+        }
+        else {
+            write-host $resultStr
+        }
     }
 
 

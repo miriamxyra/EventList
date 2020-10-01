@@ -3,7 +3,7 @@
 	ModuleToProcess = 'EventList.psm1'
 
 	# Version number of this module.
-	ModuleVersion = '1.1.0'
+	ModuleVersion = '2.0.0'
 
 	# ID used to uniquely identify this module
 	GUID = '6a7ec113-3459-431c-a0eb-4942615a850c'
@@ -41,7 +41,24 @@
 	# FormatsToProcess = @('xml\EventList.Format.ps1xml')
 
 	# Functions to export from this module
-	FunctionsToExport = 'Open-GUI'
+	FunctionsToExport = @(
+		'Open-EventListGUI'
+		'Import-BaselineFromFolder'
+		'Get-BaselineNameFromDB'
+		'Remove-AllBaselines'
+		'Remove-OneBaseline'
+		'Get-BaselineEventList'
+		'Get-MitreEventList'
+		'Get-AgentConfigString'
+		'Get-SigmaSupportedSiemFromDb'
+		'Get-GroupPolicyFromMitreTechniques'
+		'Import-YamlCofigurationFromFolder'
+		'Remove-AllYamlConfigurations'
+		'Add-EventListConfiguration'
+		'Get-SigmaPath'
+		'Get-SigmaQueries'
+		'Remove-EventListConfiguration'
+	)
 
 	# Cmdlets to export from this module
 	CmdletsToExport = ''

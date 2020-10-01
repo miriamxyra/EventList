@@ -1,4 +1,4 @@
-﻿function Open-GUI {
+﻿function Open-EventListGUI {
 
 <#
     .SYNOPSIS
@@ -8,11 +8,13 @@
     Opens the EventList GUI.
 
     .EXAMPLE
-    Open-GUI
+    Open-EventListGUI
 
     Opens the EventList GUI.
 
 #>
+
+    $Script:openFromGui = $true
 
     $GuiWidth = 1535
     $GuiHeight = 1000
@@ -28,8 +30,6 @@
 
     $x = 10
     $y = 20 + 60
-
-    $Script:database = "$ModuleRoot\internal\data\EventList.db"
 
     Add-Type -AssemblyName System.Windows.Forms
     [System.Windows.Forms.Application]::EnableVisualStyles()
@@ -107,7 +107,7 @@
     $ButtonExportGPO.location                = New-Object System.Drawing.Point($x,$y)
     $ButtonExportGPO.Font                    = 'Microsoft Sans Serif,11'
     $Form.controls.AddRange(@($ButtonExportGPO))
-    $ButtonExportGPO.Add_Click({ Get-PolicyFromEvents })
+    $ButtonExportGPO.Add_Click({ Get-GroupPolicyFromMitreTechniques })
 
     $y = $GuiHeight - 50
 
@@ -122,7 +122,7 @@
     $ButtonExit.Add_Click({ Close-Form -Form $Form })
 
     $Script:ComboBox1                       = New-Object system.Windows.Forms.ComboBox
-    $baselineNames = Get-BaselineNamesFromDB
+    $baselineNames = Get-BaselineNameFromDB
     if ([string]::IsNullOrEmpty($baselineNames)) {
         $ComboBox1.text = "No Baselines imported"
     }
@@ -137,7 +137,7 @@
     $x = 20
     $y = 10
 
-    Get-BaselineNamesFromDB | ForEach-Object {[void] $ComboBox1.Items.Add($_)}
+    Get-BaselineNameFromDB | ForEach-Object {[void] $ComboBox1.Items.Add($_)}
     $ComboBox1.location              = New-Object System.Drawing.Point($x,($y+2))
     $ComboBox1.Font                  = 'Microsoft Sans Serif,11'
 

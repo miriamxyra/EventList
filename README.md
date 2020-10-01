@@ -20,7 +20,7 @@ EventList requires the following PowerShell modules to work properly:
 ## Usage
 
 Once the module is installed, you can open EventList by calling
-    Open-Gui
+    Open-EventListGUI
 in powershell.exe as an administrator. The EventList GUI opens.
 
 Important: Do not use powershell_ise.exe to open the GUI, otherwise the resolution might not be at optimum.

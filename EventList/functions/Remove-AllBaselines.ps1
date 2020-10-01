@@ -20,14 +20,22 @@
 
 #>
 
-	[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
 	[CmdletBinding(SupportsShouldProcess)]
 	param ()
 
     $Query = "delete from baseline_data; delete from baseline_main;"
 
     Invoke-SqliteQuery -Query $Query -DataSource $Database
-    $wshell = New-Object -ComObject Wscript.Shell
-    $wshell.Popup("All baselines were successfully deleted.",0,"Done",0x1)
+
+    $returnStr = "All baselines were successfully deleted."
+
+    if ($openFromGui) {
+        $wshell = New-Object -ComObject Wscript.Shell
+        $wshell.Popup($returnStr,0,"Done",0x1)
+    }
+    #else {
+    #    Write-Host $returnStr
+    #}
+    
 
 }

@@ -24,14 +24,20 @@
 #>
 	[CmdletBinding(SupportsShouldProcess)]
     Param (
+        [Parameter(Mandatory=$True,ValueFromPipeline=$True)]
         [string]$BaselineName
     )
 
-    $valuesFromDb = Get-BaselineNamesFromDB
+    $valuesFromDb = Get-BaselineNameFromDB
 
     if (($BaselineName -eq "No Baselines imported") -or ($BaselineName -eq "Select Baseline") -or [string]::IsNullOrEmpty($BaselineName)) {
-        $wshell = New-Object -ComObject Wscript.Shell
-        $wshell.Popup("No Baseline was selected.",0,"Delete selected baseline",0x1)
+        $returnStr = "No Baseline was selected."
+        
+        if ($openFromGui) {
+            $wshell = New-Object -ComObject Wscript.Shell
+            $wshell.Popup($returnStr,0,"Delete selected baseline",0x1)
+        }
+        Write-Host $returnStr
     }
     else {
         If ($BaselineName -in $valuesFromDb) {
@@ -41,8 +47,12 @@
             $query = "delete from baseline_data where b_id = $id ; delete from baseline_main where id = $id ;"
             Invoke-SqliteQuery -Query $query -DataSource $database
 
-            $wshell = New-Object -ComObject Wscript.Shell
-            $wshell.Popup("Baseline $BaselineName was deleted successfully.",0,"Delete selected baseline",0x1)
+            $returnStr = "Baseline $BaselineName was deleted successfully."
+
+            if ($openFromGui) {
+                $wshell = New-Object -ComObject Wscript.Shell
+                $wshell.Popup($returnStr,0,"Delete selected baseline",0x1)
+            }
         }
     }
 }
