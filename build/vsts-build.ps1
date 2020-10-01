@@ -6,115 +6,61 @@ Insert any build steps you may need to take before publishing it here.
 #>
 param (
 	$ApiKey,
-	
-	$WorkingDirectory,
-	
-	$Repository = 'PSGallery',
-	
-	[switch]
-	$LocalRepo,
-	
-	[switch]
-	$SkipPublish,
-	
-	[switch]
-	$AutoVersion
+	$WorkingDirectory = $env:SYSTEM_DEFAULTWORKINGDIRECTORY
 )
-
-#region Handle Working Directory Defaults
-if (-not $WorkingDirectory)
-{
-	if ($env:RELEASE_PRIMARYARTIFACTSOURCEALIAS)
-	{
-		$WorkingDirectory = Join-Path -Path $env:SYSTEM_DEFAULTWORKINGDIRECTORY -ChildPath $env:RELEASE_PRIMARYARTIFACTSOURCEALIAS
-	}
-	else { $WorkingDirectory = $env:SYSTEM_DEFAULTWORKINGDIRECTORY }
-}
-if (-not $WorkingDirectory) { $WorkingDirectory = Split-Path $PSScriptRoot }
-#endregion Handle Working Directory Defaults
 
 # Prepare publish folder
 Write-PSFMessage -Level Important -Message "Creating and populating publishing directory"
-$publishDir = New-Item -Path $WorkingDirectory -Name publish -ItemType Directory -Force
+$publishDir = New-Item -Path $WorkingDirectory -Name publish -ItemType Directory
 Copy-Item -Path "$($WorkingDirectory)\EventList" -Destination $publishDir.FullName -Recurse -Force
 
-#region Gather text data to compile
+# Create commands.ps1
 $text = @()
-$processed = @()
-
-# Gather Stuff to run before
-foreach ($filePath in (& "$($PSScriptRoot)\..\EventList\internal\scripts\preimport.ps1"))
-{
-	if ([string]::IsNullOrWhiteSpace($filePath)) { continue }
-	
-	$item = Get-Item $filePath
-	if ($item.PSIsContainer) { continue }
-	if ($item.FullName -in $processed) { continue }
-	$text += [System.IO.File]::ReadAllText($item.FullName)
-	$processed += $item.FullName
-}
-
-# Gather commands
 Get-ChildItem -Path "$($publishDir.FullName)\EventList\internal\functions\" -Recurse -File -Filter "*.ps1" | ForEach-Object {
 	$text += [System.IO.File]::ReadAllText($_.FullName)
 }
 Get-ChildItem -Path "$($publishDir.FullName)\EventList\functions\" -Recurse -File -Filter "*.ps1" | ForEach-Object {
 	$text += [System.IO.File]::ReadAllText($_.FullName)
 }
+$text -join "`n`n" | Set-Content -Path "$($publishDir.FullName)\EventList\commands.ps1"
 
-# Gather stuff to run afterwards
-foreach ($filePath in (& "$($PSScriptRoot)\..\EventList\internal\scripts\postimport.ps1"))
+# Create resourcesBefore.ps1
+$processed = @()
+$text = @()
+foreach ($line in (Get-Content "$($PSScriptRoot)\filesBefore.txt" | Where-Object { $_ -notlike "#*" }))
 {
-	if ([string]::IsNullOrWhiteSpace($filePath)) { continue }
+	if ([string]::IsNullOrWhiteSpace($line)) { continue }
 	
-	$item = Get-Item $filePath
-	if ($item.PSIsContainer) { continue }
-	if ($item.FullName -in $processed) { continue }
-	$text += [System.IO.File]::ReadAllText($item.FullName)
-	$processed += $item.FullName
-}
-#endregion Gather text data to compile
-
-#region Update the psm1 file
-$fileData = Get-Content -Path "$($publishDir.FullName)\EventList\EventList.psm1" -Raw
-$fileData = $fileData.Replace('"<was not compiled>"', '"<was compiled>"')
-$fileData = $fileData.Replace('"<compile code into here>"', ($text -join "`n`n"))
-[System.IO.File]::WriteAllText("$($publishDir.FullName)\EventList\EventList.psm1", $fileData, [System.Text.Encoding]::UTF8)
-#endregion Update the psm1 file
-
-#region Updating the Module Version
-if ($AutoVersion)
-{
-	Write-PSFMessage -Level Important -Message "Updating module version numbers."
-	try { [version]$remoteVersion = (Find-Module 'EventList' -Repository $Repository -ErrorAction Stop).Version }
-	catch
+	$basePath = Join-Path "$($publishDir.FullName)\EventList" $line
+	foreach ($entry in (Resolve-PSFPath -Path $basePath))
 	{
-		Stop-PSFFunction -Message "Failed to access $($Repository)" -EnableException $true -ErrorRecord $_
+		$item = Get-Item $entry
+		if ($item.PSIsContainer) { continue }
+		if ($item.FullName -in $processed) { continue }
+		$text += [System.IO.File]::ReadAllText($item.FullName)
+		$processed += $item.FullName
 	}
-	if (-not $remoteVersion)
-	{
-		Stop-PSFFunction -Message "Couldn't find EventList on repository $($Repository)" -EnableException $true
-	}
-	$newBuildNumber = $remoteVersion.Build + 1
-	[version]$localVersion = (Import-PowerShellDataFile -Path "$($publishDir.FullName)\EventList\EventList.psd1").ModuleVersion
-	Update-ModuleManifest -Path "$($publishDir.FullName)\EventList\EventList.psd1" -ModuleVersion "$($localVersion.Major).$($localVersion.Minor).$($newBuildNumber)"
 }
-#endregion Updating the Module Version
+if ($text) { $text -join "`n`n" | Set-Content -Path "$($publishDir.FullName)\EventList\resourcesBefore.ps1" }
 
-#region Publish
-if ($SkipPublish) { return }
-if ($LocalRepo)
+# Create resourcesAfter.ps1
+$processed = @()
+$text = @()
+foreach ($line in (Get-Content "$($PSScriptRoot)\filesAfter.txt" | Where-Object { $_ -notlike "#*" }))
 {
-	# Dependencies must go first
-	Write-PSFMessage -Level Important -Message "Creating Nuget Package for module: PSFramework"
-	New-PSMDModuleNugetPackage -ModulePath (Get-Module -Name PSFramework).ModuleBase -PackagePath .
-	Write-PSFMessage -Level Important -Message "Creating Nuget Package for module: EventList"
-	New-PSMDModuleNugetPackage -ModulePath "$($publishDir.FullName)\EventList" -PackagePath .
+	if ([string]::IsNullOrWhiteSpace($line)) { continue }
+	
+	$basePath = Join-Path "$($publishDir.FullName)\EventList" $line
+	foreach ($entry in (Resolve-PSFPath -Path $basePath))
+	{
+		$item = Get-Item $entry
+		if ($item.PSIsContainer) { continue }
+		if ($item.FullName -in $processed) { continue }
+		$text += [System.IO.File]::ReadAllText($item.FullName)
+		$processed += $item.FullName
+	}
 }
-else
-{
-	# Publish to Gallery
-	Write-PSFMessage -Level Important -Message "Publishing the EventList module to $($Repository)"
-	Publish-Module -Path "$($publishDir.FullName)\EventList" -NuGetApiKey $ApiKey -Force -Repository $Repository
-}
-#endregion Publish
+if ($text) { $text -join "`n`n" | Set-Content -Path "$($publishDir.FullName)\EventList\resourcesAfter.ps1" }
+
+# Publish to Gallery
+Publish-Module -Path "$($publishDir.FullName)\EventList" -NuGetApiKey $ApiKey -Force
