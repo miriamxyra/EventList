@@ -19,7 +19,6 @@
 	param ()
 
     foreach ($key in $CheckBoxArea.keys) {
-
         if (![string]::IsNullOrEmpty($CheckBoxArea[$key].checkedItems)) {
             foreach ($item in ($CheckBoxArea[$key].checkedItems.Split(" "))) {
                 if (![string]::IsNullOrEmpty($item)) {

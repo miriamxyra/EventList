@@ -72,13 +72,13 @@
         if ($RadioButton1.Checked){
             Remove-OneBaseline -BaselineName $ComboBox1Value
             Reset-MitreCheckboxes
-            $baselineNames = Get-BaselineNamesFromDB
+            $baselineNames = Get-BaselineNameFromDB
             Sync-ComboBox -ComboBox $ComboBox1 -Items $baselineNames
         }
         elseif ($RadioButton2.Checked){
             Remove-AllBaselines
             Reset-MitreCheckboxes
-            $baselineNames = Get-BaselineNamesFromDB
+            $baselineNames = Get-BaselineNameFromDB
             Sync-ComboBox -ComboBox $ComboBox1 -Items $baselineNames
         }
     }

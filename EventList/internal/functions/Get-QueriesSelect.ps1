@@ -40,7 +40,7 @@
     $RadioButton1.Text = "Please generate SIGMA queries for:"
 
     $ComboSiemBox                       = New-Object system.Windows.Forms.ComboBox
-    $supportedSiem = Get-SupportedSiemFromDb
+    $supportedSiem = Get-SigmaSupportedSiemFromDb
     if ([string]::IsNullOrEmpty($supportedSiem)) {
         $ComboSiemBox.text = "No supported Siem solution imported"
     }
@@ -94,10 +94,10 @@
     if ($dialogResult -eq "OK"){
         if ($ExportFolder = Start-FilePicker -description "Where do you want to save your Queries?") {
             if ($RadioButton1.Checked){
-                Get-SigmaQueries -OutputPath $ExportFolder -siemName $SelectedComboSiemBox
+                Get-SigmaQueries -Path $ExportFolder -siemName $SelectedComboSiemBox
             }
             elseif ($RadioButton2.Checked){
-                Get-SigmaQueries -OutputPath $ExportFolder -siemName $SelectedComboSiemBox -yamlOnly
+                Get-SigmaQueries -Path $ExportFolder -siemName $SelectedComboSiemBox -yamlOnly
             }
         }
     }

@@ -68,7 +68,7 @@
            $baselineFolder = Start-FilePicker -description "Select a file or directory where the Baselines are located"
            if (![string]::IsNullOrEmpty($baselineFolder)) {
                Import-BaselineFromFolder -Path "$baselineFolder"
-               $baselineNames = Get-BaselineNamesFromDB
+               $baselineNames = Get-BaselineNameFromDB
                Sync-ComboBox -ComboBox $ComboBox1 -Items $baselineNames
            }
            else {

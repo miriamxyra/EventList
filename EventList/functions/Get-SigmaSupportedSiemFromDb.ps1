@@ -1,4 +1,4 @@
-﻿function Get-SupportedSiemFromDb {
+﻿function Get-SigmaSupportedSiemFromDb {
 
 <#
     .SYNOPSIS
@@ -8,7 +8,7 @@
     Returns all SIEM systems which are supported by sigma.
 
     .EXAMPLE
-    Get-SupportedSiemFromDb
+    Get-SigmaSupportedSiemFromDb
 
     Returns all SIEM systems which are supported by sigma.
 

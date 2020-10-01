@@ -3,7 +3,7 @@
 	ModuleToProcess = 'EventList.psm1'
 
 	# Version number of this module.
-	ModuleVersion = '1.1.0'
+	ModuleVersion = '2.0.0'
 
 	# ID used to uniquely identify this module
 	GUID = '6a7ec113-3459-431c-a0eb-4942615a850c'
@@ -26,9 +26,9 @@
 	# Modules that must be imported into the global environment prior to importing
 	# this module
 	RequiredModules = @(
-		@{ ModuleName='PSFramework'; ModuleVersion='1.0.19' }
-		@{ ModuleName = 'PSSQLite'; ModuleVersion = '1.0.3' }
-		@{ ModuleName = 'powershell-yaml'; ModuleVersion = '0.4.0' }
+		@{ ModuleName='PSFramework'; ModuleVersion='1.4.150' }
+		@{ ModuleName = 'PSSQLite'; ModuleVersion = '1.1.0' }
+		@{ ModuleName = 'powershell-yaml'; ModuleVersion = '0.4.2' }
 	)
 
 	# Assemblies that must be loaded prior to importing this module
@@ -41,7 +41,24 @@
 	# FormatsToProcess = @('xml\EventList.Format.ps1xml')
 
 	# Functions to export from this module
-	FunctionsToExport = 'Open-GUI'
+	FunctionsToExport = @(
+		'Open-EventListGUI'
+		'Import-BaselineFromFolder'
+		'Get-BaselineNameFromDB'
+		'Remove-AllBaselines'
+		'Remove-OneBaseline'
+		'Get-BaselineEventList'
+		'Get-MitreEventList'
+		'Get-AgentConfigString'
+		'Get-SigmaSupportedSiemFromDb'
+		'Get-GroupPolicyFromMitreTechniques'
+		'Import-YamlCofigurationFromFolder'
+		'Remove-AllYamlConfigurations'
+		'Add-EventListConfiguration'
+		'Get-SigmaPath'
+		'Get-SigmaQueries'
+		'Remove-EventListConfiguration'
+	)
 
 	# Cmdlets to export from this module
 	CmdletsToExport = ''
