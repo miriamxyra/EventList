@@ -7,6 +7,9 @@
     .DESCRIPTION
     Gets all the names of the baselines, stored in the database.
 
+    .PARAMETER BaselineName
+    Prompts you for the Baseline Name that should be checked against the database.
+
     .EXAMPLE
     Get-BaselineNameFromDB
 
@@ -29,7 +32,6 @@
 
     if ($baselineNames) {
         $baselineNames = ConvertFrom-PSSQLStringArray -Text $baselineNames
-        #$baselineNames = ConvertFrom-PSSQLString -Text $baselineNames
     }
     
     return $baselineNames

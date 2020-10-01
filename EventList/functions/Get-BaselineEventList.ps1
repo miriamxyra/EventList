@@ -7,6 +7,9 @@
     .DESCRIPTION
     Gets an EventList for the Baseline which was selected from the Combobox in the GUI.
 
+    .PARAMETER BaselineName
+    Prompts you for the Baseline Name that should be used to generate an EventList from.
+
 	.PARAMETER generateExcelYsn
 	Defines if an Excel document will be generated. When checked, one can define where the document should be stored.
 

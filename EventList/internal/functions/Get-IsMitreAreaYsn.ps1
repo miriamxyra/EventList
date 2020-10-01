@@ -6,6 +6,9 @@
     
         .DESCRIPTION
         Returns if a string is a MitreArea.
+
+        .PARAMETER AreaName
+	    Prompts you for the Area Name which should be checked.
     
         .EXAMPLE
         Get-IsMitreAreaYsn -BaselineName "MSFT Windows Server 2019 - Domain Controller"

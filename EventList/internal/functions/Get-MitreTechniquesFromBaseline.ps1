@@ -6,6 +6,9 @@
     
         .DESCRIPTION
         Returns a list of MitreTechniques that would be covered by a specific baseline.
+
+        .PARAMETER BaselineName
+        Prompts you for the Baseline Name that should be used to generate the Mitre Techniques list from.
     
         .EXAMPLE
         Get-MitreTechniquesFromBaseline -BaselineName "MSFT Windows Server 2019 - Domain Controller"

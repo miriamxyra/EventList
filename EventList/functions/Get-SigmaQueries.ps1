@@ -7,6 +7,9 @@
     .DESCRIPTION
     Returns the queries for the desired target system. Either as YAML, sigma command or already converted by sigma.
 
+    .PARAMETER Identity
+    Prompts you for the Identity that should be used to generate the Sigma queries from. You can either use a baseline name or one or multiple Mitre Technique IDs.
+
     .PARAMETER Path
     Defines where the Output should be stored.
 

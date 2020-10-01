@@ -7,6 +7,12 @@
     .DESCRIPTION
     Returns queries for the selected MITRE ATT&CK Techniques & areas.
 
+    .PARAMETER TechniqueIds
+	Prompts you for the TechniqueIds which should be used to generate the queries.
+
+    .PARAMETER AreaNames
+	    Prompts you for the Area Names which should be used to generate the queries.
+
     .EXAMPLE
     Get-Queries -TechniqueIds "'T1086', 'T1039', 'T1090'" -AreaNames ""
 

@@ -5,7 +5,10 @@
     Gets all the event ids that you need to monitor the selected MITRE Techniques & areas.
 
     .DESCRIPTION
-    Gets all the event ids that you need to monitor the selected MITRE Techniques & areas and matches it to the selected event forwarder syntax.
+	Gets all the event ids that you need to monitor the selected MITRE Techniques & areas and matches it to the selected event forwarder syntax.
+	
+	.PARAMETER Identity
+	Prompts you for the Identity that should be used to generate an Agent Configuration from. You can either use a baseline name or one or multiple Mitre Technique IDs.
 
 	.PARAMETER ForwarderName
 	Specifies the name of the Agent Forwarder for which the config should be queried:

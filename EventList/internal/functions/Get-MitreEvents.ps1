@@ -7,6 +7,9 @@
     .DESCRIPTION
     Returns all events for the selected Mitre techniques.
 
+    .PARAMETER MitreTechniques
+	Lets you specify the Mitre ATT&CK techniques that should be used.
+
     .PARAMETER AdvancedAudit
     If set, only events which will be set from the Advanced Audit options will be taken into account.
 
