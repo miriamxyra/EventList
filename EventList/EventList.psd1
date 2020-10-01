@@ -26,9 +26,9 @@
 	# Modules that must be imported into the global environment prior to importing
 	# this module
 	RequiredModules = @(
-		@{ ModuleName='PSFramework'; ModuleVersion='1.0.19' }
-		@{ ModuleName = 'PSSQLite'; ModuleVersion = '1.0.3' }
-		@{ ModuleName = 'powershell-yaml'; ModuleVersion = '0.4.0' }
+		@{ ModuleName='PSFramework'; ModuleVersion='1.4.150' }
+		@{ ModuleName = 'PSSQLite'; ModuleVersion = '1.1.0' }
+		@{ ModuleName = 'powershell-yaml'; ModuleVersion = '0.4.2' }
 	)
 
 	# Assemblies that must be loaded prior to importing this module
