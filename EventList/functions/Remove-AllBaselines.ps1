@@ -20,6 +20,7 @@
 
 #>
 
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '')]
 	[CmdletBinding(SupportsShouldProcess)]
 	param ()
 
@@ -29,13 +30,10 @@
 
     $returnStr = "All baselines were successfully deleted."
 
-    if ($openFromGui) {
+    if ($Script:openFromGui) {
         $wshell = New-Object -ComObject Wscript.Shell
         $wshell.Popup($returnStr,0,"Done",0x1)
     }
-    #else {
-    #    Write-Host $returnStr
-    #}
     
 
 }

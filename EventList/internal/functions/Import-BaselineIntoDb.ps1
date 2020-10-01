@@ -20,6 +20,7 @@
 
 #>
 
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingWriteHost', '')]
     [cmdletbinding()]
     param (
         [Parameter(Mandatory = $true)]
@@ -55,7 +56,7 @@
     else {
         $PolicyName = ConvertFrom-PSSQLString($PolicyName)
         $resultStr = "Baseline $PolicyName was already imported"
-        if ($openFromGui) {
+        if ($Script:openFromGui) {
             $wshell = New-Object -ComObject Wscript.Shell
             $wshell.Popup($resultStr,0,"Done",0x1)
         }

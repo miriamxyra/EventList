@@ -28,7 +28,7 @@
 
     Invoke-SqliteQuery -Query $Query -DataSource $Database
 
-    if ($openFromGui) {
+    if ($Script:openFromGui) {
         $wshell = New-Object -ComObject Wscript.Shell
         $wshell.Popup("All YAML configurations were successfully deleted.",0,"Done",0x1)
     }

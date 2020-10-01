@@ -14,15 +14,11 @@ function Get-IsMitreAreaYsn {
     
     #>
         [CmdletBinding()]
-        [OutputType([String])]
+        [OutputType([Bool])]
         param (
             [Parameter(Mandatory = $true)]
             [string]$AreaName
         )
-
-        #if ($AreaName -contains ","){
-        #    $AreaNames = $AreaName -split ","
-        #}
     
         $query = "select area_name from mitre_areas where area_name = ' + $AreaName + ';"
     

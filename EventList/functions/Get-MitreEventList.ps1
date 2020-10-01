@@ -1,6 +1,6 @@
 ﻿function Get-MitreEventList {
 
-<#
+    <#
     .SYNOPSIS
     Gets an EventList for the selected MITRE ATT&CK techniques.
 
@@ -19,7 +19,8 @@
     Gets an EventList for the selected MITRE ATT&CK techniques.
 
 #>
-	[CmdletBinding()]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingWriteHost', '')]
+    [CmdletBinding()]
     param (
         [Parameter(ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true)]
         [Alias('BaselineName', 'TechniqueId')]
@@ -28,35 +29,35 @@
         [boolean]$generateExcelYsn = $false
     )
 
-    
+    process {
 
-    if ($openFromGui) {
-        $results = Get-MitreEvents -MitreTechniques $(Get-CheckedMitreTechniques)
-    }
-    else {   
-        if ($identity) {
-            if (Get-BaselineNameFromDB -BaselineName $Identity){
-                $tmpStr = Get-MitreTechniquesFromBaseline -BaselineName $Identity
-                if ($tmpStr){
-                    $results = Get-MitreEvents -MitreTechniques $tmpStr
-                }
-            }
-            elseif ($Identity -match "^T\d{4}$") {
-                $results = Get-MitreEvents -MitreTechniques $("'" + $Identity + "'")
-            }
-            elseif ( ($Identity -match "^['T\d{4}$]") -or ($Identity -match "^T\d{4}$") ) {
-                    $results = Get-MitreEvents -MitreTechniques $Identity
-            } 
+        if ($Script:openFromGui) {
+            $results = Get-MitreEvents -MitreTechniques $(Get-CheckedMitreTechniques)
         }
-    }
-    
-    if (![string]::IsNullOrEmpty($results)) {
+        else {   
+            if ($identity) {
+                if (Get-BaselineNameFromDB -BaselineName $Identity) {
+                    $tmpStr = Get-MitreTechniquesFromBaseline -BaselineName $Identity
+                    if ($tmpStr) {
+                        $results = Get-MitreEvents -MitreTechniques $tmpStr
+                    }
+                }
+                elseif ($Identity -match "^T\d{4}$") {
+                    $results = Get-MitreEvents -MitreTechniques $("'" + $Identity + "'")
+                }
+                elseif ( ($Identity -match "^['T\d{4}$]") -or ($Identity -match "^T\d{4}$") ) {
+                    $results = Get-MitreEvents -MitreTechniques $Identity
+                } 
+            }
+        }
+        
+        if (![string]::IsNullOrEmpty($results)) {
             if ($generateExcelYsn) {
                 $tmp = get-date -f yyyyMMddHHmmss
                 $results | Export-Csv -Path $ExportFolder\$tmp"EventList.csv"
             }
             else {
-                if ($openFromGui) {
+                if ($Script:openFromGui) {
                     $results | Out-GridView -Title "EventList for: $ComboBox1Value"
                 }
                 else {
@@ -64,17 +65,17 @@
                 }
             }
 
-    }
-    else {
-        $returnStr = "No MITRE ATT&CK techniques were selected."
-        if ($openFromGui) {
-            $wshell = New-Object -ComObject Wscript.Shell
-            $wshell.Popup($returnStr,0,"Done",0x1)
         }
         else {
-            Write-Host $returnStr
+            $returnStr = "No MITRE ATT&CK techniques were selected."
+            if ($Script:openFromGui) {
+                $wshell = New-Object -ComObject Wscript.Shell
+                $wshell.Popup($returnStr, 0, "Done", 0x1)
+            }
+            else {
+                Write-Host $returnStr
+            }
         }
     }
-
 
 }

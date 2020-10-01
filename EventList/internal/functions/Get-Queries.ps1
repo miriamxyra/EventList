@@ -19,12 +19,8 @@
 	param (
         [Parameter(Mandatory=$True)]
         [string]$TechniqueIds,
-        #[Parameter(Mandatory=$True)]
         [string]$AreaNames
     )
-
-    #$TechniqueIds = Get-CheckedMitreTechniques
-    #$AreaNames = Get-CheckedMitreAreas
 
     $query = "select distinct
                 ma.area_name, mt.technique_id, mt.technique_name, qm.title, qm.description, qm.status, qm.date, qm.author, qm.raw_yaml, qm.level, qm.filename
@@ -42,7 +38,6 @@
             order by area_id, technique_name;"
 
 
-    #write-host $query
     $result = Invoke-SqliteQuery -Query $query -DataSource $database
 
     return $result

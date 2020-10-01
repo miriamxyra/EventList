@@ -29,13 +29,7 @@
 		[switch]$EventIds
     )
 
-    #if ($openFromGui) {
-    #    $MitreTechniques = Get-CheckedMitreTechniques
-    #}
-
     if (![string]::IsNullOrEmpty($MitreTechniques)) {
-
-        #$MitreTechniques = "" + $MitreTechniques
 
         if ($AdvancedAudit){
             # if success_failure_id >= 3 it's always s+f / 1 = s / 2 = f
@@ -51,6 +45,5 @@
         $resultStr = Invoke-SqliteQuery -Query $query -DataSource $database
     }
 
-    #write-host $resultStr
     return $resultStr
 }
