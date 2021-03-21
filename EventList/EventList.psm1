@@ -1,5 +1,5 @@
 ﻿$script:ModuleRoot = $PSScriptRoot
-$script:ModuleVersion = "2.0.1"
+$script:ModuleVersion = "2.0.2"
 $Script:database = "$ModuleRoot\internal\data\EventList.db"
 
 # Detect whether at some level dotsourcing was enforced
