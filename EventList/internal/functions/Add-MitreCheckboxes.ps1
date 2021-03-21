@@ -63,7 +63,7 @@
         $tmp.location = New-Object System.Drawing.Point($x,$y)
         $tmp.Font = 'Microsoft Sans Serif,10'
 
-        $query = "select distinct ma.area_name, mt.technique_id, mt.technique_name from mitre_events me, events_main em, mitre_techniques mt, mitre_areas ma where me.technique_id = mt.id and me.event_id = em.id and me.area_id = ma.id and ma.id = '" + $area.id + "' order by technique_name;"
+        $query = "select distinct ma.area_name, mt.technique_id, mt.technique_name from mitre_events me, events_main em, mitre_techniques mt, mitre_areas ma where me.technique_id = mt.id and me.event_id = em.event_id and me.area_id = ma.id and ma.id = '" + $area.id + "' order by technique_name;"
 
         $techniques = Invoke-SqliteQuery -Query $query -DataSource $Database
 

@@ -147,3 +147,10 @@ It is still ordered by the MITRE ATT&CK areas & techniques, but it’s still onl
 
 
 Happy hunting!
+
+# EventList Change Log
+## 2021-03-21
+- Added new event sources: PowerShell Operational Log, WinRM, Windows Defender, Windows PowerShell, PowerShell DSC, Applocker: Packaged app-Deployment, Applocker: MSI and Script, Applocker: EXE and DLL, Applocker: Packaged app-Execution
+- Added new columns in events_source: Full Name, Log Path
+- Added more event ids to the database: PowerShell
+- Changed events_main structure: the PK "id" is no longer treated as the event id of each event. Column "event_id" was added instead. This should avoid conflicts with matching event ids in different event logs
